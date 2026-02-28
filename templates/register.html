@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patient Registration</title>
+<style>
+body{
+    background:#0f172a;
+    font-family: Arial;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    background:#111827;
+    padding:40px;
+    border-radius:16px;
+    width:400px;
+    box-shadow:0 0 40px rgba(0,0,0,0.6);
+}
+
+input, select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    background:#1f2937;
+    color:white;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>Patient Registration</h2>
+
+<form method="POST">
+
+<input name="name" placeholder="Patient Name" required>
+
+<input 
+    name="age" 
+    type="number" 
+    placeholder="Age"
+    min="1"
+    max="120"
+    required
+>
+
+<select name="gender" required>
+    <option value="">Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+</select>
+
+<!-- Patient Phone -->
+<label>Patient Phone</label>
+<div style="display:flex; gap:8px;">
+    <input value="+91" readonly style="width:80px; background:#374151;">
+    <input 
+        name="phone" 
+        placeholder="XXXXXXXXXX"
+        pattern="[0-9]{10}"
+        maxlength="10"
+        inputmode="numeric"
+        required
+    >
+</div>
+
+<!-- Doctor Name -->
+<input name="doctor_name" placeholder="Doctor Name" required>
+
+<!-- Doctor Phone -->
+<label>Doctor Phone</label>
+<div style="display:flex; gap:8px;">
+    <input value="+91" readonly style="width:80px; background:#374151;">
+    <input 
+        name="doctor_phone" 
+        placeholder="XXXXXXXXXX"
+        pattern="[0-9]{10}"
+        maxlength="10"
+        inputmode="numeric"
+        required
+    >
+</div>
+
+<select name="department" required>
+    <option value="">Select Department</option>
+    <option>Orthopedic</option>
+    <option>Cardiology</option>
+</select>
+
+<button type="submit">Register Patient</button>
+
+</form>
+</div>
+
+</body>
+</html>
