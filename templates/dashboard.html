@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recovery Dashboard</title>
+
+<style>
+
+body{
+    background:#0f172a;
+    font-family: Arial;
+    color:white;
+    padding:40px;
+}
+
+h1{text-align:center;margin-bottom:30px;}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#111827;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+th, td{
+    padding:14px;
+    text-align:center;
+}
+
+th{ background:#1f2937; }
+
+tr:nth-child(even){ background:#1f2937; }
+
+.symptom-box{
+    background:#0b1220;
+    padding:10px;
+    border-radius:8px;
+    font-size:13px;
+    text-align:left;
+    line-height:1.5;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>📊 Patient Recovery Dashboard</h1>
+
+<table>
+
+<thead>
+<tr>
+    <th>Patient Name</th>
+    <th>Department</th>
+    <th>Patient Phone</th>
+    <th>Doctor Name</th>
+    <th>Doctor Phone</th>
+    <th>Symptoms</th>
+    <th>Score</th>
+    <th>Risk</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for row in data %}
+<tr>
+
+<td>{{ row[0] }}</td> <!-- Name -->
+<td>{{ row[1] }}</td> <!-- Department -->
+<td>{{ row[2] }}</td> <!-- Phone -->
+<td>{{ row[3] }}</td> <!-- Doctor Name -->
+<td>{{ row[4] }}</td> <!-- Doctor Phone -->
+
+<!-- 🔥 DYNAMIC SYMPTOMS -->
+<td>
+<div class="symptom-box">
+
+{% if row[1] == "Orthopedic" %}
+
+Pain: {{ "Yes" if row[5]=="Y" else "No" }}<br>
+Swelling: {{ "Yes" if row[6]=="Y" else "No" }}<br>
+Fever: {{ "Yes" if row[7]=="Y" else "No" }}<br>
+Mobility Issue: {{ "Yes" if row[8]=="N" else "No" }}<br>
+Wound Infection: {{ "Yes" if row[9]=="Y" else "No" }}
+
+{% elif row[1] == "Cardiology" %}
+
+Chest Pain: {{ "Yes" if row[5]=="Y" else "No" }}<br>
+Breathlessness: {{ "Yes" if row[6]=="Y" else "No" }}<br>
+Fever: {{ "Yes" if row[7]=="Y" else "No" }}<br>
+Fatigue/Dizziness: {{ "Yes" if row[8]=="Y" else "No" }}<br>
+Incision Infection: {{ "Yes" if row[9]=="Y" else "No" }}
+
+{% else %}
+
+Symptom1: {{ row[5] }}<br>
+Symptom2: {{ row[6] }}<br>
+Symptom3: {{ row[7] }}<br>
+Symptom4: {{ row[8] }}<br>
+Symptom5: {{ row[9] }}
+
+{% endif %}
+
+</div>
+</td>
+
+<td>{{ row[10] }}</td> <!-- Score -->
+<td>{{ row[11] }}</td> <!-- Risk -->
+
+</tr>
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</body>
+</html>
